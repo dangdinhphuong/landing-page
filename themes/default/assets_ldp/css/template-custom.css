@@ -113,7 +113,7 @@ body{
 .joinButton{
     cursor: pointer;
     color: rgb(255, 255, 255);
-    background-color: #F3648C;
+    background-color: #F79616;
     min-height: 46px;
     min-width: 48px;
     border-radius: 3px;
@@ -162,7 +162,7 @@ body{
 }
 
 .form-block-customer button{
-    background: #F3648C !important;
+    background: #F79616 !important;
     padding: 17px 25px;
     border-color: #fff !important;
 }
@@ -182,7 +182,7 @@ body{
 .title.small.title_customer {
     font-size: 16px;
     font-weight: 600;
-    color:#F3648C;
+    color:#F79616;
 }
 .title-sub-customer{
     font-weight:600;
@@ -264,7 +264,7 @@ body{
 }
 
 .features-box .bg-features .btn-video-popup:focus{
-        color: #f3648c !important;
+        color: #F79616 !important;
 }
 .container_quantity{
     font-family: 'SVN Poppins' !important;
@@ -285,7 +285,7 @@ body{
 }
 
 .container_quantity .inline-list-customer svg {
-    color: #F3648C;
+    color: #F79616;
     margin-right: 8px;
 }
 .container_quantity .inline-list-customer > li{
@@ -310,11 +310,11 @@ body{
     display: inline-flex;
     -webkit-box-align: center;
     align-items: center;
-    color:#F3648C;
+    color:#F79616;
 }
 
 .service_description{
-    color: #F3648C;
+    color: #F79616;
     font-weight: 700;
     font-size: 15px;
     line-height: 30px;
@@ -399,7 +399,7 @@ body{
     justify-content: center;
 }
 .container-price .button_price:hover {
-    background-color: #F3648C;
+    background-color: #F79616;
     color: rgb(255 255 255);
 }
 
@@ -424,7 +424,7 @@ body{
     justify-content: center;
     background-color: rgb(255, 255, 255);
     border: 1.5px solid rgba(91, 43, 157, 0.15);
-    color: #F3648C;
+    color: #F79616;
     min-height: 46px;
     min-width: 48px;
     font-family: inherit;
@@ -646,7 +646,7 @@ body{
     display: inline-flex;
     -webkit-box-align: center;
     align-items: center;
-    color:#F3648C;
+    color:#F79616;
     font-weight: 500;
     margin-top:15px;
 }
@@ -667,7 +667,7 @@ body{
     padding-bottom: 5%;
 }
 .wrap_faq{
-    background: url(../images/hoavan_faq.png) 66% center no-repeat #F3648C;
+    background: url(../images/hoavan_faq.png) 66% center no-repeat #F79616;
     border-radius: 15px;
     padding: 40px 75px;
     -webkit-box-align: center;
@@ -704,7 +704,7 @@ body{
     -webkit-box-pack: center;
     justify-content: center;
     /*color: rgb(255, 255, 255);
-    background-color: #F3648C;*/
+    background-color: #F79616;*/
     background-color: rgb(255, 255, 255);
     color: rgb(24, 54, 86);
     margin: 15px 0px;
