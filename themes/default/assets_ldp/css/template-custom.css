@@ -1038,7 +1038,7 @@ footer .menu_item li a img {
     padding: 30px 25px;
     background-repeat: no-repeat;
     background-position: -3px;
-    background-size: 440px;
+    background-size: 60% 60%;
 }
 
 #modal-inpage .heade-modal {
@@ -1066,14 +1066,14 @@ footer .menu_item li a img {
 }
 #modal-inpage #close-modal-page {
     display: block;
-    background: #f4b3ce;
     float: right;
     padding: 3px;
-    box-shadow: 0 1px 1px 0 #7c7c7c;
-    cursor: pointer;
     position: absolute;
-    top: 12px;
-    right: 12px;
+    top: -2px;
+    right: -43px;
+}
+#modal-inpage #close-modal-page img{
+width: 50%;
 }
 #modal-inpage .title-slogan-modals {
     font-size: 25px;
@@ -1119,8 +1119,8 @@ footer .menu_item li a img {
 
 #modal-inpage .btn-modalss {
     width: calc(100% - 62px);
-    background: #e45991;
-    border: solid 1px #e45991;
+    background: #F79616;
+    border: solid 1px #F79616;
     color: #fff;
     font-size: 16px;
     text-align: center;
