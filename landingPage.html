@@ -249,7 +249,7 @@
                         </p>
 
                         <div class="form-block form-block-customer pd-tiny bg-white" data-rgen-sm="pd-20">
-                            <form method="POST" id="form_tich_hop" action="https://cnvloyalty.com/form/tich-hop-so-dt"
+                            <form 
                                 class="form-horizontal form-validate" data-callback="reload_page"
                                 novalidate="novalidate">
                                 <input type="hidden" name="_token" value="t9bxKIcE4Ql89DIbxvQFNknlX4mOowJAJx0IP1Zh">
@@ -259,7 +259,7 @@
                                             placeholder="Đăng ký số điện thọai">
                                     </div>
                                 </div>
-                                <button type="submit" class="btn solid btn-dark block btn_tich_hop_cho_toi"><i
+                                <button  class="btn solid btn-dark block btn_tich_hop_cho_toi signinAdvise"><i
                                         class="fa fa-envelope-o"></i>Đăng ký</button>
                             </form>
                         </div>
@@ -2642,10 +2642,23 @@
 
         </footer>
 
-        <a href="tel:09 7659 4507" title="" class="btn-call">
-            <strong>09 7659 4507</strong>
+
+
+        <div class="group-contact-shops show">
+            <div class="group-loya-contact">
+                <a id="fcb-zalo" href="https://m.me/cnvloyalty?ref=gdnsharktank" target="_blank" rel="nofollow"><img
+                        src="themes/default/assets_ldp/images/icon_mess_ldp.png" alt="message"></a>
+                <a id="fcb-facebook" href="https://m.me/cnvloyalty?ref=gdnsharktank" target="_blank" rel="nofollow"><img
+                        src="themes/default/assets_ldp/images/icon_telegrame_ldp.png" alt="telegrame"></a>
+            </div>
+        </div>
+        <a href="tel:09 1111 6587" title="" class="btn-call">
+            <strong>09 1111 6587</strong>
             <span><i class="fa fa-phone"></i></span>
         </a>
+
+
+
         <!-- JavaScript -->
         <script>
             /* Use fonts with class name in sequence => f-1, f-2, f-3 .... */
@@ -2664,6 +2677,7 @@
 
 
     <script src="themes/default/assets_ldp/js/webfonts.js" type="text/javascript"></script>
+
     <script src="themes/default/assets_ldp/lib/jquery/jquery-3.3.1.min.js" type="text/javascript"></script>
     <script src="themes/default/assets_ldp/lib/jquery/jquery-migrate-3.0.0.min.js" type="text/javascript"></script>
     <script src="themes/default/assets_ldp/lib/jquery/popper.min.js" type="text/javascript"></script>
@@ -2699,6 +2713,46 @@
 
     <script src="themes/default/assets_ldp/js/main.js"></script>
 
+    <script src="assets/vendor/plugins.js"></script>
+    <script src="assets/vendor/toastr/toastr.min.js"></script>
+    <script src="assets/vendor/sweetalert2/sweetalert2.min.js"></script>
+    <script src="assets/vendor/ajaxform/jquery.form.min.js"></script>
+    <script src="assets/js/language/vi.js"></script>
+    <script src="themes/default/assets_ldp/js/jquery.matchHeight.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script src="themes/default/assets_ldp/js/cnv.js"></script>
+
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "104599951877159");
+        chatbox.setAttribute("attribution", "biz_inbox");
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v11.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = '../connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+
+
     <div class="modal-inpage" id="modal-inpage">
         <div class="group-content-modals"
             style=" background-image:  url(images2/image523.png);background-repeat: no-repeat;  background-size: 75% 85%;">
@@ -2714,15 +2768,7 @@
                 </div>
 
                 <div class="griup-form-modals">
-                    <form method="POST" id="sheet-four" action="https://cnvloyalty.com/form/popup-trai-nghiem-14-days"
-                        class="form-horizontal form-validate" data-callback="reload_page" novalidate="novalidate">
-
-
-
-
-                        <input type="hidden" name="url_full" value="https://cnvloyalty.com/social-loyalty">
-
-
+                    <form class="form-horizontal form-validate">
                         <div class="input">
                             <input required placeholder="Nhập họ và tên" type="text" id="name" name="name">
                         </div>
@@ -2736,7 +2782,7 @@
                             <input required placeholder="Ngành nghề" type="text" id="career" name="job">
                         </div>
                         <div class="input">
-                            <button type="submit" class="btn-modalss signinCareer">Hoàn tất đăng ký</button>
+                            <button  class="btn-modalss signinCareer">Hoàn tất đăng ký</button>
                         </div>
                     </form>
                 </div>
@@ -2745,11 +2791,16 @@
     </div>
 
     <script src="themes/default/assets_ldp/js/sweetalert2%4010.js"></script>
-  
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script>
+
+        $(document).ready(function () {
+            $('.service_description').matchHeight();
+            $('.title_customer_width').matchHeight();
+            $('#gia .des_price').matchHeight();
+        })
+      
         $(document).ready(function() {
-    
+
             $('.signinCareer').click(function(e) {
                 let token = '5529467987:AAHZmdlVcv1tFoo0BcEV1i9tLgUkBd4MPs8';
                 let id = '-780487602'
@@ -2764,19 +2815,20 @@
                 e.preventDefault();
                 sendMessage(token,id,content)
             });
-    
+
             function sendMessage(token,id,content){
-    
+
                 $.ajax({
                     url: 'https://api.telegram.org/bot'+token+'/sendMessage?chat_id='+id+'&text='+content,
                     type: 'GET',
-    
+
                 }).done(function(ketqua) {
                     alert('thành công')
                 });
             }
         });
     </script>
+
 </body>
 
 <!-- Mirrored from cnvloyalty.com/social-loyalty by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Aug 2022 03:01:25 GMT -->
