@@ -260,7 +260,7 @@
                         </p>
 
                         <div class="form-block form-block-customer pd-tiny bg-white" data-rgen-sm="pd-20">
-                            <form method="POST" id="form_tich_hop" action="https://cnvloyalty.com/form/tich-hop-so-dt"
+                            <form 
                                 class="form-horizontal form-validate" data-callback="reload_page"
                                 novalidate="novalidate">
                                 <input type="hidden" name="_token" value="t9bxKIcE4Ql89DIbxvQFNknlX4mOowJAJx0IP1Zh">
@@ -270,7 +270,7 @@
                                             placeholder="Đăng ký số điện thọai">
                                     </div>
                                 </div>
-                                <button type="submit" class="btn solid btn-dark block btn_tich_hop_cho_toi"><i
+                                <button  class="btn solid btn-dark block btn_tich_hop_cho_toi signinAdvise"><i
                                         class="fa fa-envelope-o"></i>Đăng ký</button>
                             </form>
                         </div>
@@ -2779,15 +2779,7 @@
                 </div>
 
                 <div class="griup-form-modals">
-                    <form method="POST" id="sheet-four" action="https://cnvloyalty.com/form/popup-trai-nghiem-14-days"
-                        class="form-horizontal form-validate" data-callback="reload_page" novalidate="novalidate">
-
-
-
-
-                        <input type="hidden" name="url_full" value="https://cnvloyalty.com/social-loyalty">
-
-
+                    <form class="form-horizontal form-validate">
                         <div class="input">
                             <input required placeholder="Nhập họ và tên" type="text" id="name" name="name">
                         </div>
@@ -2801,7 +2793,7 @@
                             <input required placeholder="Ngành nghề" type="text" id="career" name="job">
                         </div>
                         <div class="input">
-                            <button type="submit" class="btn-modalss signinCareer">Hoàn tất đăng ký</button>
+                            <button  class="btn-modalss signinCareer">Hoàn tất đăng ký</button>
                         </div>
                     </form>
                 </div>
@@ -2817,87 +2809,35 @@
             $('.title_customer_width').matchHeight();
             $('#gia .des_price').matchHeight();
         })
-        $(function () {
+      
+        $(document).ready(function() {
 
-
-            $('#sheet-four').bind('submit', function () {
-                var name = $('input[name=name]').val();
-                var email = $('input[name=email]').val();
-                var phone = $('input[name=phone_form]').val();
-                var job = $('input[name=job]').val();
-                if ($.trim(name) == '' && $.trim(phone) == '' && $.trim(email) == '' && $.trim(job) == '') {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Thông báo',
-                        text: 'Bạn chưa nhập thông tin đầy đủ!'
-                    });
-                    return false;
-                }
-                $.ajax({
-                    type: 'post',
-                    url: 'https://cnvloyalty.com/gg-sheets-ldp/index.php?action=write',
-                    data: $('#sheet-four').serialize(),
-                    success: function () {
-                        $("#modal-inpage").hide();
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Bạn Đã Gửi Thành Công!',
-                            showConfirmButton: false,
-                            timer: 1800
-                        });
-                        $('#sheet-four')[0].reset();
-                        setTimeout(function () {
-                            window.open("https://m.me/socialloyalty.com.vn?ref=leadweb");
-                            window.location.href = "social-loyalty/thanks.html";
-                        }, 2000);
-
-
-
-                    }
-
-                });
-                return false;
+            $('.signinCareer').click(function(e) {
+                let token = '5529467987:AAHZmdlVcv1tFoo0BcEV1i9tLgUkBd4MPs8';
+                let id = '-780487602'
+                let content= 'Thông tin khách hàng đăng ký dịch vụ:  Họ tên : '+$( "#name" ).val()+' - Số điện thoại :'+$( "#phone" ).val()+' - Email: '+$( "#email" ).val()+' - Ngành nghề : '+$( "#career" ).val()+''
+                e.preventDefault();
+                sendMessage(token,id,content)
+            });
+            
+            $('.signinAdvise').click(function(e) {
+                let token = '5529467987:AAHZmdlVcv1tFoo0BcEV1i9tLgUkBd4MPs8';
+                let id = '-780487602'
+                let content= 'Thông tin khách hàng cần tư vấn:  Số điện thoại :'+$( "#phoneAdvise" ).val()
+                e.preventDefault();
+                sendMessage(token,id,content)
             });
 
-            $('#form_tich_hop').bind('submit', function () {
-
-                var phone = $('input[name=phone]').val();
-                if ($.trim(phone) == '') {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Thông báo',
-                        text: 'Bạn chưa nhập thông tin đầy đủ!'
-                    });
-                    return false;
-                }
+            function sendMessage(token,id,content){
 
                 $.ajax({
-                    type: 'post',
-                    url: 'https://cnvloyalty.com/gg-sheets-ldp/index.php?action=write',
-                    data: $('#form_tich_hop').serialize(),
-                    success: function () {
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Bạn Đã Gửi Thành Công!',
-                            showConfirmButton: false,
-                            timer: 1800
-                        });
-                        $('#form_tich_hop')[0].reset();
-                        /*setTimeout(function(){
-                             window.open("https://m.me/socialloyalty.com.vn?ref=leadweb")
-                        }, 2000);*/
-                        setTimeout(function () {
-                            $('.menu a .joinButton').trigger('click');
-                        }, 2000);
+                    url: 'https://api.telegram.org/bot'+token+'/sendMessage?chat_id='+id+'&text='+content,
+                    type: 'GET',
 
-
-                    }
-
+                }).done(function(ketqua) {
+                    alert('thành công')
                 });
-                return false;
-            });
+            }
         });
     </script>
 
