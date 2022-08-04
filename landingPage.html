@@ -260,17 +260,15 @@
                         </p>
 
                         <div class="form-block form-block-customer pd-tiny bg-white" data-rgen-sm="pd-20">
-                            <form 
-                                class="form-horizontal form-validate" data-callback="reload_page"
-                                novalidate="novalidate">
+                            <form class="form-horizontal form-validate" >
                                 <input type="hidden" name="_token" value="t9bxKIcE4Ql89DIbxvQFNknlX4mOowJAJx0IP1Zh">
                                 <div class="field-wrp">
                                     <div class="form-group">
-                                        <input class="form-control domain_name" id="phoneAdvise" required type="text" name="phone"
-                                            placeholder="Đăng ký số điện thọai">
+                                        <input class="form-control domain_name" id="phoneAdvise" required type="text"
+                                            name="phone" placeholder="Đăng ký số điện thọai">
                                     </div>
                                 </div>
-                                <button  class="btn solid btn-dark block btn_tich_hop_cho_toi signinAdvise"><i
+                                <button class="btn solid btn-dark block btn_tich_hop_cho_toi signinAdvise"><i
                                         class="fa fa-envelope-o"></i>Đăng ký</button>
                             </form>
                         </div>
@@ -2344,20 +2342,28 @@
 
                 <div class="griup-form-modals">
                     <form class="form-horizontal form-validate">
-                        <div class="input">
-                            <input required placeholder="Nhập họ và tên" type="text" id="name" name="name">
+                        <div class="input" style="text-align: left; margin-bottom: 17px">
+                            <input required placeholder="Nhập họ và tên" type="text" id="name" name="name"
+                                style="margin-bottom: 0px;">
+                            <span class="text-danger" id="error_name"></span>
                         </div>
-                        <div class="input phones">
-                            <input required placeholder="Nhập số điện thoại" type="text" id="phone" name="phone_form">
+                        <div class="input " style="text-align: left; margin-bottom: 17px">
+                            <input required placeholder="Nhập số điện thoại" type="number" id="phone" name="phone_form"
+                                style="margin-bottom: 0px;">
+                            <span class="text-danger" id="error_phone"></span>
                         </div>
-                        <div class="input emails">
-                            <input required placeholder="Nhập Email" type="email" id="email" name="email">
+                        <div class="input " style="text-align: left; margin-bottom: 17px">
+                            <input required placeholder="Nhập Email" type="email" id="email" name="email"
+                                style="margin-bottom: 0px;">
+                            <span class="text-danger" id="error_email"></span>
                         </div>
-                        <div class="input">
-                            <input required placeholder="Ngành nghề" type="text" id="career" name="job">
+                        <div class="input" style="text-align: left; margin-bottom: 17px">
+                            <input required placeholder="Ngành nghề" type="text" id="career" name="job"
+                                style="margin-bottom: 0px;">
+                            <span class="text-danger" id="error_career"></span>
                         </div>
-                        <div class="input">
-                            <button  class="btn-modalss signinCareer">Hoàn tất đăng ký</button>
+                        <div class="input" style="text-align: left; margin-bottom: 17px">
+                            <button class="btn-modalss signinCareer">Hoàn tất đăng ký</button>
                         </div>
                     </form>
                 </div>
@@ -2373,33 +2379,67 @@
             $('.title_customer_width').matchHeight();
             $('#gia .des_price').matchHeight();
         })
-      
-        $(document).ready(function() {
 
-            $('.signinCareer').click(function(e) {
-                let token = '5529467987:AAHZmdlVcv1tFoo0BcEV1i9tLgUkBd4MPs8';
-                let id = '-780487602'
-                let content= 'Thông tin khách hàng đăng ký dịch vụ:  Họ tên : '+$( "#name" ).val()+' - Số điện thoại :'+$( "#phone" ).val()+' - Email: '+$( "#email" ).val()+' - Ngành nghề : '+$( "#career" ).val()+''
+        $(document).ready(function () {
+            $('.signinCareer').click(function (e) {
                 e.preventDefault();
-                sendMessage(token,id,content)
-            });
-            
-            $('.signinAdvise').click(function(e) {
-                let token = '5529467987:AAHZmdlVcv1tFoo0BcEV1i9tLgUkBd4MPs8';
-                let id = '-780487602'
-                let content= 'Thông tin khách hàng cần tư vấn:  Số điện thoại :'+$( "#phoneAdvise" ).val()
-                e.preventDefault();
-                sendMessage(token,id,content)
+                let data = { name: 'Họ và tên', email: 'email', phone: 'Số điện thoai', career: 'Tư vấn' };
+                if (!validateEmpty(data)) {
+                    return false
+                }
+                else {
+                    let token = '5529467987:AAHZmdlVcv1tFoo0BcEV1i9tLgUkBd4MPs8';
+                    let id = '-780487602'
+                    let content = 'Thông tin khách hàng đăng ký dịch vụ:  Họ tên : ' + $("#name").val() + ' - Số điện thoại :' + $("#phone").val() + ' - Email: ' + $("#email").val() + ' - Ngành nghề : ' + $("#career").val() + ''
+                    e.preventDefault();
+                    sendMessage(token, id, content)
+                }
             });
 
-            function sendMessage(token,id,content){
+            $('.signinAdvise').click(function (e) {
+                if( $("#phoneAdvise").val() !== ''){
+                    let token = '5529467987:AAHZmdlVcv1tFoo0BcEV1i9tLgUkBd4MPs8';
+                let id = '-780487602'
+                let content = 'Thông tin khách hàng cần tư vấn:  Số điện thoại :' + $("#phoneAdvise").val()
+                e.preventDefault();
+                sendMessage(token, id, content)
+                }
 
+            });
+            function validateEmpty(data) {
+                let check= true
+                for (var key in data) {
+                    $("#error_" + key).text('')
+                    if ($("#" + key).val() == '') {
+                        $("#error_" + key).text(data[key] + ' không được để rỗng')
+                        check = false
+                    }
+                }
+                return check
+            }
+            function sendMessage(token, id, content) {
                 $.ajax({
-                    url: 'https://api.telegram.org/bot'+token+'/sendMessage?chat_id='+id+'&text='+content,
                     type: 'GET',
-
-                }).done(function(ketqua) {
-                    alert('thành công')
+                    url: 'https://api.telegram.org/bot' + token + '/sendMessage?chat_id=' + id + '&text=' + content,
+                }).done(function (data) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Đăng ký thành công',
+                        timer: 1500
+                    }).then(() => {
+                        $("#name").val('');
+                        $("#phone").val('');
+                        $("#email").val('');
+                        $("#career").val('');
+                        $("#phoneAdvise").val('')
+                        $("#modal-inpage").css("display", "none");
+                    });
+                }).fail(function (data) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Đăng ký không thành công',
+                        timer: 2000
+                    })
                 });
             }
         });
