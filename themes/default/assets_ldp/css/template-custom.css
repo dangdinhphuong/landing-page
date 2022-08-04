@@ -218,6 +218,10 @@ margin: 0;
     padding-left: 0px;
 
 }
+.container-width-customer .image  img{
+height: 400px;
+
+}
 .container-width-customer .banner  .banner_style > img{
     width: 98%;
     height: 364px;
@@ -271,6 +275,12 @@ img {
 }
 /*End Banner*/
 /* trang chu */
+.medium-home > ul{
+    display: block !important;
+}
+.medium-home > ul > li{
+   max-width: 100% !important;
+}
 .content-home{
     color: #000000!important;
     font-size: 19px!important;
