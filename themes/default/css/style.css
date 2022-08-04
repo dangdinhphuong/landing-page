@@ -211,3 +211,36 @@
     right: 10px;
     top: 49%;
 }
+
+.productlist-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 5px;
+    position: relative;
+}
+
+.productlist-images .images img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: none;
+}
+
+.productlist-images-name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-family: 'Gentium Book Basic';
+    font-size: 20px;
+    line-height: 28px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, .2);
+
+}
