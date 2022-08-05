@@ -321,3 +321,12 @@
 .group-contact-shops a img {
     border: none;
 }
+
+.bg-pink {
+    background-color:
+        #fefcf9 !important;
+}
+
+.info-obj .info {
+    height: 360px;
+}
