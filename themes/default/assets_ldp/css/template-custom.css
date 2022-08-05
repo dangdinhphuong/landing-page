@@ -1271,7 +1271,7 @@ footer .menu_item li a img {
 #modal-inpage .group-content-modals {
     max-width: 750px;
     width: 100%;
-    background: #fff url(../images/bgr-popup.png);
+    background: #fff;
     position: relative;
     top: 82px;
     left: 50%;
@@ -1646,6 +1646,21 @@ footer .menu_item li a img {
 @media screen and (max-width: 991px) {
     .btn-call strong {
         display: none;
+    }
+    #modal-inpage .group-content-modals {
+        max-width: 750px;
+        width: 100%;
+        background: #fff !important;
+        position: relative;
+        top: 82px;
+        left: 50%;
+        transform: translate(-50%, -35px);
+        display: flex;
+        flex-wrap: wrap;
+        padding: 30px 25px;
+        background-repeat: no-repeat;
+        background-position: -3px;
+        background-size: 60% 60%;
     }
 }
 
