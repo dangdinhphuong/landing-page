@@ -6,10 +6,15 @@
 
 .image-group img {
     width: 100%;
-    height: 313px;
-    position: relative;
+    height: 230px;
     border: none;
+    object-fit: cover;
 }
+
+.image-group-link {
+    position: relative;
+}
+
 
 .image-group .title-image {
     position: absolute;
