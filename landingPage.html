@@ -2387,7 +2387,7 @@
                                         style="border:none" alt="facebook">Facebook</a></li>
 
                             <li><a target="_blank" style="color: #000000;" href="#" class="link-white"><img
-                                        class="icon_social" src="#" style="border:none" alt="Twitter">Zalo</a></li>
+                                        class="icon_social" src="themes/default/assets_ldp/images/zalo-icon.png" style="border:none" alt="Twitter">Zalo</a></li>
 
                             <li><a target="_blank" style="color: #000000;" href="#
                                     class=" link-white"><img class="icon_social"
@@ -2580,14 +2580,15 @@
             });
 
             $('.signinAdvise').click(function (e) {
-
+console.log($('#phoneAdvise').val())
                 if (!FormValidatePhoneAdvise()) {
                     setTimeout(() => {
-                        $('#phoneAdvise').val('')
-                    }, 2000)
+                        $('#error_phoneAdvise').text('')
+                    }, 5000)
                     return false
                 }
                 else {
+                    $('#error_phoneAdvise').text('')
                     let token = '5529467987:AAHZmdlVcv1tFoo0BcEV1i9tLgUkBd4MPs8';
                     let id = '-780487602'
                     let content = 'Thông tin khách hàng cần tư vấn:  Số điện thoại :' + $("#phoneAdvise").val()
@@ -2655,6 +2656,7 @@
                 $('#phoneAdvise').focus();
                 return false;
             }
+            return true
 
         }
         function FormValidate() {
@@ -2692,6 +2694,7 @@
                 $('#phone').focus();
                 return false;
             }
+            return true
 
         }
     </script>
