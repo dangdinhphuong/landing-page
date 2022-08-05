@@ -273,6 +273,7 @@
                                     <div class="form-group">
                                         <input class="form-control domain_name" id="phoneAdvise" required type="text"
                                             name="phone" placeholder="Đăng ký số điện thọai">
+                                            <span class="text-danger" id="error_phoneAdvise"></span>
                                     </div>
                                 </div>
                                 <button class="btn solid btn-dark block btn_tich_hop_cho_toi signinAdvise"><i
@@ -316,7 +317,8 @@
     <section class="pos-rel pd-tb-small bg-pink section_new" data-rgen-sm="pd-tb-small align-c" id="tin-tuc">
         <div class="container align-c container-width-customer">
             <div class="w75 mr-auto" data-animate-in="fadeIn">
-                <h2 class="title small title_customer mb-4" data-rgen-sm="medium">Các Dịch vụ đi kèm vượt trội giúp tăng 100% hiệu suất tối đa trong kinh doanh và quản lý bán hàng</h2>
+                <h2 class="title small title_customer mb-4" data-rgen-sm="medium">Các Dịch vụ đi kèm vượt trội giúp tăng
+                    100% hiệu suất tối đa trong kinh doanh và quản lý bán hàng</h2>
 
             </div>
             <div class="row gt40 mb20">
@@ -343,7 +345,8 @@
                         <div class="carousel-content">
                             <h2>Website bán hàng</h2>
                             <p>Sở hữu website bán hàng chuyên nghiệp</p>
-                            <a href="javascript:void(0)"><button type="button" class="joinButton"><span class="btn-text">Đăng ký dùng thử</span></button></a>
+                            <a href="javascript:void(0)"><button type="button" class="joinButton"><span
+                                        class="btn-text">Đăng ký dùng thử</span></button></a>
                         </div>
                     </div><!-- info box -->
                 </div>
@@ -369,8 +372,10 @@
                         </div>
                         <div class="carousel-content">
                             <h2>Bán hàng online</h2>
-                            <p>Không tốn chi phí đầu tư, bán hàng mọi mơi, tiếp cận và khai thác được nhiều khách hàng hơn, Dễ dàng quản lý và tính toán doanh thu......</p>
-                            <a href="javascript:void(0)"><button type="button" class="joinButton"><span class="btn-text">Đăng ký dùng thử</span></button></a>
+                            <p>Không tốn chi phí đầu tư, bán hàng mọi mơi, tiếp cận và khai thác được nhiều khách hàng
+                                hơn, Dễ dàng quản lý và tính toán doanh thu......</p>
+                            <a href="javascript:void(0)"><button type="button" class="joinButton"><span
+                                        class="btn-text">Đăng ký dùng thử</span></button></a>
                         </div>
                     </div>
                 </div>
@@ -398,9 +403,11 @@
                         </div>
                         <div class="carousel-content">
                             <h2>Bán hàng tại quầy POS</h2>
-                            <p>Kết nối đến các thiết bị ngoại vi, 
-                                bán hàng đa nền tảng - Tiết kiệm chi phí, dữ liệu đồng bộ liên tục, kiểm soát nhân viên mọi lúc, mọi nơi </p>
-                            <a href="javascript:void(0)"><button type="button" class="joinButton"><span class="btn-text">Đăng ký dùng thử</span></button></a>
+                            <p>Kết nối đến các thiết bị ngoại vi,
+                                bán hàng đa nền tảng - Tiết kiệm chi phí, dữ liệu đồng bộ liên tục, kiểm soát nhân viên
+                                mọi lúc, mọi nơi </p>
+                            <a href="javascript:void(0)"><button type="button" class="joinButton"><span
+                                        class="btn-text">Đăng ký dùng thử</span></button></a>
                         </div>
                     </div><!-- info box -->
                 </div>
@@ -426,9 +433,11 @@
                         </div>
                         <div class="carousel-content">
                             <h2>Ứng dụng mobile</h2>
-                            <p>Booking đặt bàn/ đặt lịch nhanh chóng , Marketing 0 đồng tự động , Tích điểm, nâng hạng khách hàng ,
+                            <p>Booking đặt bàn/ đặt lịch nhanh chóng , Marketing 0 đồng tự động , Tích điểm, nâng hạng
+                                khách hàng ,
                                 Đánh giá sản phẩm hữu ích qua sao</p>
-                            <a href="javascript:void(0)"><button type="button" class="joinButton"><span class="btn-text">Đăng ký dùng thử</span></button></a>
+                            <a href="javascript:void(0)"><button type="button" class="joinButton"><span
+                                        class="btn-text">Đăng ký dùng thử</span></button></a>
                         </div>
                     </div>
                 </div>
@@ -2536,8 +2545,7 @@
         $(document).ready(function () {
             $('.signinCareer').click(function (e) {
                 e.preventDefault();
-                let data = { name: 'Họ và tên', email: 'email', phone: 'Số điện thoai', career: 'Tư vấn' };
-                if (!validateEmpty(data)) {
+                if (!FormValidate()) {
                     return false
                 }
                 else {
@@ -2550,7 +2558,11 @@
             });
 
             $('.signinAdvise').click(function (e) {
-                if ($("#phoneAdvise").val() !== '') {
+                
+                if (!FormValidatePhoneAdvise()) {
+                    return false
+                }
+                else {
                     let token = '5529467987:AAHZmdlVcv1tFoo0BcEV1i9tLgUkBd4MPs8';
                     let id = '-780487602'
                     let content = 'Thông tin khách hàng cần tư vấn:  Số điện thoại :' + $("#phoneAdvise").val()
@@ -2559,17 +2571,7 @@
                 }
 
             });
-            function validateEmpty(data) {
-                let check = true
-                for (var key in data) {
-                    $("#error_" + key).text('')
-                    if ($("#" + key).val() == '') {
-                        $("#error_" + key).text(data[key] + ' không được để rỗng')
-                        check = false
-                    }
-                }
-                return check
-            }
+   
             function sendMessage(token, id, content) {
                 $.ajax({
                     type: 'GET',
@@ -2596,6 +2598,76 @@
                 });
             }
         });
+
+
+
+        function validateEmail(email) {
+            var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+            return re.test(email);
+        }
+
+        //Validate Phone Number
+        function validatePhone(phoneNumber) {
+            var phoneNumberPattern = /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/;
+            return phoneNumberPattern.test(phoneNumber);
+        }
+
+        // Validate Form on Submit
+        function FormValidatePhoneAdvise() {
+            if ($('#phoneAdvise').val() == "") {
+                $("#error_phoneAdvise").text("Số điện thoai không được để rỗng.");
+                $('#phoneAdvise').focus();
+                return false;
+            }
+            else if ($('#phoneAdvise').val().length < 10) {
+                $("#error_phoneAdvise").text("Số điện thoại  ít nhất 10 chữ số.");
+                $('#phoneAdvise').focus();
+                return false;
+            }
+            else if (!validatePhone($('#phoneAdvise').val())) {
+                $("#error_phoneAdvise").text("Số điện thoại không đúng định dạng.");
+                $('#phoneAdvise').focus();
+                return false;
+            }
+  
+        }
+        function FormValidate() {
+            let data = { name: 'Họ và tên', email: 'email', phone: 'Số điện thoai' };
+            for (var key in data) {
+                $("#error_" + key).text('')
+            }
+            if ($('#name').val() == "") {
+                $("#error_name").text('Họ và tên không được để rỗng')
+                $('#name').focus();
+                return false;
+            }
+            else if ($('#email').val() == "") {
+                $("#error_email").text('Email không được để rỗng')
+                $('#email').focus();
+                return false;
+            }
+            else if (!validateEmail($('#email').val())) {
+                $("#error_email").text('Email không đúng định dạng')
+                $('#email').focus();
+                return false;
+            }
+            else if ($('#phone').val() == "") {
+                $("#error_phone").text("Số điện thoai không được để rỗng.");
+                $('#phone').focus();
+                return false;
+            }
+            else if ($('#phone').val().length < 10) {
+                $("#error_phone").text("Số điện thoại  ít nhất 10 chữ số.");
+                $('#phone').focus();
+                return false;
+            }
+            else if (!validatePhone($('#phone').val())) {
+                $("#error_phone").text("Số điện thoại không đúng định dạng.");
+                $('#phone').focus();
+                return false;
+            }
+  
+        }
     </script>
 
 </body>
