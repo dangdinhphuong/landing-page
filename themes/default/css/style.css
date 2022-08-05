@@ -254,3 +254,70 @@
     display: block;
     width: 200px;
 }
+
+.container-carousel-img .owl-item {
+    min-height: 1px;
+    float: left;
+    -webkit-backface-visibility: hidden;
+    -webkit-touch-callout: none;
+    position: relative;
+}
+
+.container-carousel-img {
+    overflow: hidden;
+    height: 420px;
+}
+
+.container-carousel-img .carousel-item-slide-images {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.container-carousel-img .carousel-item-slide-images img {
+    border: none;
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.container-carousel-img .owl-nav .owl-next,
+.container-carousel-img .owl-nav .owl-prev {
+    visibility: hidden;
+
+}
+
+.container-carousel-img .owl-dots {
+    top: -100px;
+}
+
+.container-carousel-img .owl-dots .active {
+    background-color: #f3f1eb;
+
+}
+
+.container-carousel-img .owl-dot {
+    background-color: rgba(0, 0, 0, .4);
+}
+
+.joinButton:focus {
+    outline: none;
+}
+
+#modal-inpage .btn-modalss:focus {
+    outline: none;
+}
+
+.service_description {
+    margin-top: 0 !important;
+}
+
+.group-contact-shops a img {
+    border: none;
+}

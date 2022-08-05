@@ -1,8 +1,21 @@
 $(document).ready(function () {
-    carouselSliderHeader()
-  
-  
+    carouselSliderHeader();
+    containerCarouselImg();  
 });
+
+function containerCarouselImg() {
+    $(".container-carousel-img").owlCarousel({
+        autoplay: true,
+        smartSpeed: 1500,
+        center: true,
+        dots: true,
+        loop: true,
+        nav : false,
+
+        items: 1,
+    });
+}
+
 function carouselSliderHeader() {
     $(".carousel-container").owlCarousel({
         autoplay: true,
